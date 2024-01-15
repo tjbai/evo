@@ -1,1 +1,1 @@
-messing w/ genetic algos
+inspired to learn about genetic algo

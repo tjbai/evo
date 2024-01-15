@@ -19,9 +19,9 @@ class CanvasMetainfo:
 class Entity:
     def __init__(self,
                  meta: CanvasMetainfo,
-                 x: float = None,
-                 y: float = None,
-                 rot: float = None) -> None:
+                 x: float=None,
+                 y: float=None,
+                 rot: float=None) -> None:
         
         self.meta = meta
         self.gaze = True
@@ -109,7 +109,7 @@ class State:
         ))
     
 class Simpleton(Entity):
-    def __init__(self, meta, brain = None):
+    def __init__(self, meta, brain=None) -> None:
         super().__init__(meta)
         self.brain = brain
         self.health = 100
@@ -131,8 +131,12 @@ class Simpleton(Entity):
         )
     
 class Food(Entity):
+    '''
+    half-convinced the way this constructor
+    is being handled is a fucking bug
+    '''
     def __init__(self, meta, x, y) -> None:
-        super().__init__(meta)
+        super().__init__(meta, x, y)
         self.fill = 'green'
         self.gaze = False
         self.health = 1
@@ -146,6 +150,8 @@ class Food(Entity):
     
     def reproduce(self) -> Entity:
         d = 1
-        return Food(meta=self.meta,
-                    x=self.x+d*random.uniform(0,10),
-                    y=self.x+d*random.uniform(0,10))
+        return Entity()
+        # return Food(meta=self.meta,
+        #             x=self.x+d*random.uniform(0,10),
+        #             y=self.x+d*random.uniform(0,10))
+    

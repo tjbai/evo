@@ -1,4 +1,4 @@
-#!./venv/bin/python3
+#!./venv/bin/python
 
 import argparse
 import tkinter as tk
@@ -57,7 +57,7 @@ def main():
     meta = CanvasMetainfo(canvas=canvas, dim=args.dim, partition_size=args.partition_size)
     
     simpletons = [Simpleton(meta=meta) for _ in range(100)]
-    food = [Food(meta=meta) for _ in range(50)]
+    food = [Food(meta=meta, x=None, y=None) for _ in range(50)]
     state = State(entities=simpletons+food, meta=meta)
     
     def update():
